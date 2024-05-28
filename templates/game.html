@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <title>Game</title>
+</head>
+<body class="bg-gradient-to-r from-green-400 to-blue-500 flex flex-col items-center justify-center h-screen text-white p-5">
+    <div class="bg-opacity-75 bg-black p-10 rounded-lg shadow-md text-center mb-5">
+        <div>
+            <h1 class="text-6xl text-yellow-300 mb-4">Welcome, {{ player.name }}!</h1>
+        </div>
+        <h2 class="text-5xl mb-4">You are in the {{ player.sector }} sector and your business type is {{ player.bussiness_type }}.</h2>
+        <p class="text-xl">Your current money is: {{ player.money }}</p>
+        <p class="text-xl">Your current reputation is: {{ player.reputation }}</p>
+        <h2 class="text-4xl mt-4">Current Situation</h2>
+        <p class="text-xl">{{ situation.description }}</p>
+        <form action="{{ url_for('game') }}" method="post" class="p-5 m-5 grid grid-cols-2 gap-4">
+            <label for="option" class="text-xl">Choose an option:</label>
+            <select name="option" id="option" class="form-select block w-full mt-1">
+                {% for option in situation.options %}
+                    <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </form>
+    </div>
+</body>
+</html>

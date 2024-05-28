@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <title>Welcome to Money Tales</title>
+</head>
+<body class="bg-gradient-to-r from-green-400 to-blue-500 flex flex-col items-center justify-center h-screen text-white p-5">
+    <div class="bg-opacity-75 bg-black p-10 rounded-lg shadow-md text-center mb-5">
+        <div>
+            <h1 class="text-6xl text-yellow-300 mb-4">Money Tales</h1>
+        </div>
+        <h2 class="text-5xl mb-4">Welcome to Module 1</h2>
+        <p class="mb-4">This is a finance game where you will play a card game. You will be given a deck and asked to select some sectors. After sector selection, you will be given some companies to select from. Then based on the company and sectors, you will play a situational game where each situation will be drawn randomly from cards in deck three.</p>
+        <form action="/start_game" method="post">
+            <input class="border p-2 mb-4 text-black font-bold" type="text" name="player_name" placeholder="Enter your name">
+            <button class="bg-green-500 hover:bg-green-700 text-white px-6 py-2 rounded" type="submit">Start</button>
+        </form>
+    </div>
+    <div class="bg-opacity-75 bg-black p-10 rounded-lg shadow-md text-center mt-5">
+        <h2 class="text-5xl mb-4">What You Will Learn</h2>
+        <ul class="list-disc list-inside text-left">
+            <li>Understanding of different sectors in finance</li>
+            <li>Knowledge about different types of companies</li>
+            <li>How to make strategic decisions based on financial situations</li>
+            <li>How to maximize the success of your chosen companies</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <title>Sector Cards</title>
+</head>
+<body class="bg-gradient-to-r from-green-400 to-blue-500 flex flex-wrap justify-center items-center h-screen text-white p-5">
+    <h1 class="text-6xl mb-4 w-full text-center">Choose Your {{name}}</h1>
+    <form id="sectorForm" method="POST" action="/next_step" class="p-5 m-5 grid grid-cols-2 gap-4">
+        {% for sector in options %}
+        <div class="bg-white text-gray-800 p-10 rounded-lg shadow-lg cursor-pointer transform transition-transform duration-500 hover:scale-105 hover:shadow-xl" onclick="selectCard(this)">
+            <h2 class="text-5xl mb-4">{{ sector|replace("|", "") }}</h2>
+            <p>Includes companies related to {{ sector.lower()|replace("|", "") }}.</p>
+        </div>
+        {% endfor %}
+        <input type="hidden" id="selectedSector" name="selectedSector">
+        <input type="hidden" id="state" name="state" value={{oncomplete}}>
+        <div class="col-span-2 text-center">
+            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white px-6 py-2 rounded mt-5">Proceed to Next Step</button>
+        </div>
+    </form>
+
+    <script>
+        function selectCard(card) {
+            // Remove the selected class from all cards
+            document.querySelectorAll('.bg-white').forEach(c => c.classList.remove('bg-green-300', 'text-white'));
+            // Add the selected class to the clicked card
+            card.classList.add('bg-green-300', 'text-white');
+            // Store the sector name in the hidden input field
+            document.getElementById('selectedSector').value = card.querySelector('h2').textContent;
+        }
+    </script>
+</body>
+</html>
